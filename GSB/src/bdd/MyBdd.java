@@ -18,7 +18,14 @@ public class MyBdd {
 	
 	 /** l'objet Connection*/
     private static Connection con = null;
-    /** Le driver MySQL*/
+    
+    
+    public static Connection getCon() {
+		return con;
+	}
+
+
+	/** Le driver MySQL*/
     private final String DRIVER = "com.mysql.jdbc.Driver";
     /**URL de connection */
     private final String URL = "jdbc:mysql://localhost:3306/mydb";
@@ -57,6 +64,7 @@ public class MyBdd {
         return con;
     }
     
+   /* 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException // sans traitement des exceptions
 	{
 		con=getInstance();
@@ -80,7 +88,7 @@ public class MyBdd {
 		while(res.next()){
 			Nom = res.getString(1);
 			Prenom = res.getString(2);
-			System.out.println(Prenom + "" + Nom);
+			System.out.println("Prenom: "+ Prenom + "\nNom: " + Nom);
 		}
 		
 		// liberation des ressources
@@ -88,7 +96,7 @@ public class MyBdd {
 		res.close();
 		con.close();
 		
-	}
+	}*/
 		
 		
 }
