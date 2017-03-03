@@ -1,8 +1,5 @@
 package ApplicationGSB.views;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,30 +17,7 @@ import javax.swing.JTextArea;
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
-import javax.swing.JSeparator;
-import javax.swing.JEditorPane;
-import com.thoughtworks.xstream.converters.basic.DateConverter;
-import org.fife.ui.rtextarea.IconRowHeader;
-import org.fife.ui.rtextarea.RTextArea;
-import org.fife.ui.rtextarea.IconGroup;
-import com.alee.extended.colorchooser.WebColorChooserField;
-import javax.swing.JList;
-import com.alee.extended.date.WebCalendar;
-import com.alee.extended.date.WebDateField;
-import com.alee.extended.colorchooser.DoubleColorField;
-import com.alee.extended.filechooser.WebFileTableCellRenderer;
-import com.alee.extended.filechooser.WebFileTable;
-import com.alee.laf.slider.WebSlider;
-import com.alee.extended.button.WebSplitButton;
-import com.alee.laf.scroll.WebScrollPaneUI;
-import com.alee.laf.splitpane.WebSplitPane;
-import com.alee.laf.separator.WebSeparator;
-import com.alee.extended.filechooser.WebPathField;
-import com.alee.extended.button.WebSwitchGripper;
-import com.alee.extended.filechooser.WebFileChooserField;
-import com.alee.extended.button.WebSwitch;
-import com.alee.extended.filechooser.WebDirectoryChooser;
-import java.awt.Window;
+
 import com.alee.managers.notification.WebNotificationPopup;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -51,12 +25,11 @@ import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 import com.alee.managers.popup.WebPopup;
 import com.alee.managers.popup.PopupStyle;
-import javax.swing.border.MatteBorder;
+
 import java.awt.SystemColor;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
-import com.alee.managers.settings.processors.JPasswordFieldSettingsProcessor;
-import com.alee.managers.settings.SettingsProcessorData;
+
 import com.alee.laf.tabbedpane.WebTabbedPane;
 import com.alee.laf.tabbedpane.TabbedPaneStyle;
 import javax.swing.JTabbedPane;

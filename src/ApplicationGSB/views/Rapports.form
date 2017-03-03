@@ -81,10 +81,13 @@
                                   <Component id="idrapportField" alignment="0" pref="857" max="32767" attributes="0"/>
                                   <Component id="motifvisiteField" alignment="0" pref="857" max="32767" attributes="0"/>
                                   <Component id="bilanField" alignment="0" pref="857" max="32767" attributes="0"/>
-                                  <Component id="daterapportField" alignment="0" pref="857" max="32767" attributes="0"/>
                                   <Component id="idvisiteurField" alignment="0" pref="857" max="32767" attributes="0"/>
                                   <Component id="idpraticienField" alignment="0" pref="857" max="32767" attributes="0"/>
                                   <Component id="idechantillonField" alignment="0" pref="857" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jFormattedTextField2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <Component id="masterScrollPane" pref="944" max="32767" attributes="0"/>
@@ -99,7 +102,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="masterScrollPane" pref="173" max="32767" attributes="0"/>
+              <Component id="masterScrollPane" pref="177" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="idrapportLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -118,7 +121,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="daterapportLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="daterapportField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jFormattedTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -254,14 +257,6 @@
         <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="bilanField" targetPath="enabled" updateStrategy="1" immediately="false"/>
       </BindingProperties>
     </Component>
-    <Component class="javax.swing.JTextField" name="daterapportField">
-      <BindingProperties>
-        <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.daterapport}" target="daterapportField" targetPath="text" updateStrategy="0" immediately="false">
-          <Property name="incompletePathValue" type="java.lang.String" value="null"/>
-        </BindingProperty>
-        <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="daterapportField" targetPath="enabled" updateStrategy="1" immediately="false"/>
-      </BindingProperties>
-    </Component>
     <Component class="javax.swing.JTextField" name="idvisiteurField">
       <BindingProperties>
         <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.idvisiteur}" target="idvisiteurField" targetPath="text" updateStrategy="0" immediately="false">
@@ -336,6 +331,12 @@
         <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="01-02-2017"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

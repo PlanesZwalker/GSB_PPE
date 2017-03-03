@@ -51,7 +51,6 @@ public class Rapports extends JPanel {
         idrapportField = new javax.swing.JTextField();
         motifvisiteField = new javax.swing.JTextField();
         bilanField = new javax.swing.JTextField();
-        daterapportField = new javax.swing.JTextField();
         idvisiteurField = new javax.swing.JTextField();
         idpraticienField = new javax.swing.JTextField();
         idechantillonField = new javax.swing.JTextField();
@@ -59,6 +58,7 @@ public class Rapports extends JPanel {
         refreshButton = new javax.swing.JButton();
         newButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
 
         FormListener formListener = new FormListener();
 
@@ -120,12 +120,6 @@ public class Rapports extends JPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), bilanField, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.daterapport}"), daterapportField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        binding.setSourceUnreadableValue("null");
-        bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), daterapportField, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
-        bindingGroup.addBinding(binding);
-
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.idvisiteur}"), idvisiteurField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         binding.setSourceUnreadableValue("null");
         bindingGroup.addBinding(binding);
@@ -160,6 +154,9 @@ public class Rapports extends JPanel {
 
         deleteButton.addActionListener(formListener);
 
+        jFormattedTextField2.setText("01-02-2017");
+        jFormattedTextField2.setToolTipText("");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -191,10 +188,12 @@ public class Rapports extends JPanel {
                                     .add(idrapportField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
                                     .add(motifvisiteField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
                                     .add(bilanField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
-                                    .add(daterapportField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
                                     .add(idvisiteurField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
                                     .add(idpraticienField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
-                                    .add(idechantillonField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)))
+                                    .add(idechantillonField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
+                                    .add(layout.createSequentialGroup()
+                                        .add(jFormattedTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(0, 0, Short.MAX_VALUE))))
                             .add(masterScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -205,7 +204,7 @@ public class Rapports extends JPanel {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(masterScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                .add(masterScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(idrapportLabel)
@@ -221,7 +220,7 @@ public class Rapports extends JPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(daterapportLabel)
-                    .add(daterapportField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jFormattedTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(idvisiteurLabel)
@@ -319,7 +318,6 @@ public class Rapports extends JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bilanField;
     private javax.swing.JLabel bilanLabel;
-    private javax.swing.JTextField daterapportField;
     private javax.swing.JLabel daterapportLabel;
     private javax.swing.JButton deleteButton;
     private javax.persistence.EntityManager entityManager;
@@ -331,6 +329,7 @@ public class Rapports extends JPanel {
     private javax.swing.JLabel idrapportLabel;
     private javax.swing.JTextField idvisiteurField;
     private javax.swing.JLabel idvisiteurLabel;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
     private java.util.List<ApplicationGSB.modeles.Rapportdevisite> list;
     private javax.swing.JScrollPane masterScrollPane;
     private javax.swing.JTable masterTable;
