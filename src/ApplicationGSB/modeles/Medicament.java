@@ -5,6 +5,8 @@
  */
 package ApplicationGSB.modeles;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
@@ -17,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -32,6 +35,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Medicament.findByIdmedicament", query = "SELECT m FROM Medicament m WHERE m.idmedicament = :idmedicament")
     , @NamedQuery(name = "Medicament.findByDenomination", query = "SELECT m FROM Medicament m WHERE m.denomination = :denomination")})
 public class Medicament implements Serializable {
+
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -55,7 +61,9 @@ public class Medicament implements Serializable {
     }
 
     public void setIdmedicament(Integer idmedicament) {
+        Integer oldIdmedicament = this.idmedicament;
         this.idmedicament = idmedicament;
+        changeSupport.firePropertyChange("idmedicament", oldIdmedicament, idmedicament);
     }
 
     public String getDenomination() {
@@ -63,7 +71,9 @@ public class Medicament implements Serializable {
     }
 
     public void setDenomination(String denomination) {
+        String oldDenomination = this.denomination;
         this.denomination = denomination;
+        changeSupport.firePropertyChange("denomination", oldDenomination, denomination);
     }
 
     @XmlTransient
@@ -106,6 +116,14 @@ public class Medicament implements Serializable {
 
     public void setComposeList(List list) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }
