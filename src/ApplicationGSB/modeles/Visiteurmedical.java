@@ -5,6 +5,8 @@
  */
 package ApplicationGSB.modeles;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -15,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -37,6 +40,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Visiteurmedical.findByLabo", query = "SELECT v FROM Visiteurmedical v WHERE v.labo = :labo")
     , @NamedQuery(name = "Visiteurmedical.findByEmail", query = "SELECT v FROM Visiteurmedical v WHERE v.email = :email")})
 public class Visiteurmedical implements Serializable {
+
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -74,7 +80,9 @@ public class Visiteurmedical implements Serializable {
     }
 
     public void setIdvisiteur(Integer idvisiteur) {
+        Integer oldIdvisiteur = this.idvisiteur;
         this.idvisiteur = idvisiteur;
+        changeSupport.firePropertyChange("idvisiteur", oldIdvisiteur, idvisiteur);
     }
 
     public String getNom() {
@@ -82,7 +90,9 @@ public class Visiteurmedical implements Serializable {
     }
 
     public void setNom(String nom) {
+        String oldNom = this.nom;
         this.nom = nom;
+        changeSupport.firePropertyChange("nom", oldNom, nom);
     }
 
     public String getMotdepasse() {
@@ -90,7 +100,9 @@ public class Visiteurmedical implements Serializable {
     }
 
     public void setMotdepasse(String motdepasse) {
+        String oldMotdepasse = this.motdepasse;
         this.motdepasse = motdepasse;
+        changeSupport.firePropertyChange("motdepasse", oldMotdepasse, motdepasse);
     }
 
     public String getPrenom() {
@@ -98,7 +110,9 @@ public class Visiteurmedical implements Serializable {
     }
 
     public void setPrenom(String prenom) {
+        String oldPrenom = this.prenom;
         this.prenom = prenom;
+        changeSupport.firePropertyChange("prenom", oldPrenom, prenom);
     }
 
     public String getAdresse() {
@@ -106,7 +120,9 @@ public class Visiteurmedical implements Serializable {
     }
 
     public void setAdresse(String adresse) {
+        String oldAdresse = this.adresse;
         this.adresse = adresse;
+        changeSupport.firePropertyChange("adresse", oldAdresse, adresse);
     }
 
     public String getVille() {
@@ -114,7 +130,9 @@ public class Visiteurmedical implements Serializable {
     }
 
     public void setVille(String ville) {
+        String oldVille = this.ville;
         this.ville = ville;
+        changeSupport.firePropertyChange("ville", oldVille, ville);
     }
 
     public String getSecteur() {
@@ -122,7 +140,9 @@ public class Visiteurmedical implements Serializable {
     }
 
     public void setSecteur(String secteur) {
+        String oldSecteur = this.secteur;
         this.secteur = secteur;
+        changeSupport.firePropertyChange("secteur", oldSecteur, secteur);
     }
 
     public String getLabo() {
@@ -130,7 +150,9 @@ public class Visiteurmedical implements Serializable {
     }
 
     public void setLabo(String labo) {
+        String oldLabo = this.labo;
         this.labo = labo;
+        changeSupport.firePropertyChange("labo", oldLabo, labo);
     }
 
     public String getEmail() {
@@ -138,7 +160,9 @@ public class Visiteurmedical implements Serializable {
     }
 
     public void setEmail(String email) {
+        String oldEmail = this.email;
         this.email = email;
+        changeSupport.firePropertyChange("email", oldEmail, email);
     }
 
     @XmlTransient
@@ -173,6 +197,14 @@ public class Visiteurmedical implements Serializable {
     @Override
     public String toString() {
         return "ApplicationGSB.modeles.Visiteurmedical[ idvisiteur=" + idvisiteur + " ]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }

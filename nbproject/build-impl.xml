@@ -126,11 +126,7 @@ is divided into following sections:
         </condition>
         <condition property="have.sources">
             <or>
-                <available file="${src..git.dir}"/>
-                <available file="${src..settings.dir}"/>
                 <available file="${src.DOCUMENTATION.dir}"/>
-                <available file="${src.bin.dir}"/>
-                <available file="${src.build.dir}"/>
                 <available file="${src.dist.dir}"/>
                 <available file="${src.doc.dir}"/>
                 <available file="${src.lib.dir}"/>
@@ -239,11 +235,7 @@ is divided into following sections:
         <!-- You can override this target in the ../build.xml file. -->
     </target>
     <target depends="-pre-init,-init-private,-init-user,-init-project,-do-init" name="-init-check">
-        <fail unless="src..git.dir">Must set src..git.dir</fail>
-        <fail unless="src..settings.dir">Must set src..settings.dir</fail>
         <fail unless="src.DOCUMENTATION.dir">Must set src.DOCUMENTATION.dir</fail>
-        <fail unless="src.bin.dir">Must set src.bin.dir</fail>
-        <fail unless="src.build.dir">Must set src.build.dir</fail>
         <fail unless="src.dist.dir">Must set src.dist.dir</fail>
         <fail unless="src.doc.dir">Must set src.doc.dir</fail>
         <fail unless="src.lib.dir">Must set src.lib.dir</fail>
@@ -270,7 +262,7 @@ is divided into following sections:
     </target>
     <target depends="-init-ap-cmdline-properties" if="ap.supported.internal" name="-init-macrodef-javac-with-processors">
         <macrodef name="javac" uri="http://www.netbeans.org/ns/j2se-project/3">
-            <attribute default="${src..git.dir}:${src..settings.dir}:${src.DOCUMENTATION.dir}:${src.bin.dir}:${src.build.dir}:${src.dist.dir}:${src.doc.dir}:${src.lib.dir}:${src.librairies.dir}:${src.nbproject.dir}:${src.dir}" name="srcdir"/>
+            <attribute default="${src.DOCUMENTATION.dir}:${src.dist.dir}:${src.doc.dir}:${src.lib.dir}:${src.librairies.dir}:${src.nbproject.dir}:${src.dir}" name="srcdir"/>
             <attribute default="${build.classes.dir}" name="destdir"/>
             <attribute default="${javac.classpath}" name="classpath"/>
             <attribute default="${javac.processorpath}" name="processorpath"/>
@@ -311,7 +303,7 @@ is divided into following sections:
     </target>
     <target depends="-init-ap-cmdline-properties" name="-init-macrodef-javac-without-processors" unless="ap.supported.internal">
         <macrodef name="javac" uri="http://www.netbeans.org/ns/j2se-project/3">
-            <attribute default="${src..git.dir}:${src..settings.dir}:${src.DOCUMENTATION.dir}:${src.bin.dir}:${src.build.dir}:${src.dist.dir}:${src.doc.dir}:${src.lib.dir}:${src.librairies.dir}:${src.nbproject.dir}:${src.dir}" name="srcdir"/>
+            <attribute default="${src.DOCUMENTATION.dir}:${src.dist.dir}:${src.doc.dir}:${src.lib.dir}:${src.librairies.dir}:${src.nbproject.dir}:${src.dir}" name="srcdir"/>
             <attribute default="${build.classes.dir}" name="destdir"/>
             <attribute default="${javac.classpath}" name="classpath"/>
             <attribute default="${javac.processorpath}" name="processorpath"/>
@@ -344,7 +336,7 @@ is divided into following sections:
     </target>
     <target depends="-init-macrodef-javac-with-processors,-init-macrodef-javac-without-processors" name="-init-macrodef-javac">
         <macrodef name="depend" uri="http://www.netbeans.org/ns/j2se-project/3">
-            <attribute default="${src..git.dir}:${src..settings.dir}:${src.DOCUMENTATION.dir}:${src.bin.dir}:${src.build.dir}:${src.dist.dir}:${src.doc.dir}:${src.lib.dir}:${src.librairies.dir}:${src.nbproject.dir}:${src.dir}" name="srcdir"/>
+            <attribute default="${src.DOCUMENTATION.dir}:${src.dist.dir}:${src.doc.dir}:${src.lib.dir}:${src.librairies.dir}:${src.nbproject.dir}:${src.dir}" name="srcdir"/>
             <attribute default="${build.classes.dir}" name="destdir"/>
             <attribute default="${javac.classpath}" name="classpath"/>
             <sequential>
@@ -932,16 +924,12 @@ is divided into following sections:
                 <include name="*"/>
             </dirset>
         </pathconvert>
-        <j2seproject3:depend srcdir="${src..git.dir}:${src..settings.dir}:${src.DOCUMENTATION.dir}:${src.bin.dir}:${src.build.dir}:${src.dist.dir}:${src.doc.dir}:${src.lib.dir}:${src.librairies.dir}:${src.nbproject.dir}:${src.dir}:${build.generated.subdirs}"/>
+        <j2seproject3:depend srcdir="${src.DOCUMENTATION.dir}:${src.dist.dir}:${src.doc.dir}:${src.lib.dir}:${src.librairies.dir}:${src.nbproject.dir}:${src.dir}:${build.generated.subdirs}"/>
     </target>
     <target depends="init,deps-jar,-pre-pre-compile,-pre-compile, -copy-persistence-xml,-compile-depend" if="have.sources" name="-do-compile">
         <j2seproject3:javac gensrcdir="${build.generated.sources.dir}"/>
         <copy todir="${build.classes.dir}">
-            <fileset dir="${src..git.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
-            <fileset dir="${src..settings.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
             <fileset dir="${src.DOCUMENTATION.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
-            <fileset dir="${src.bin.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
-            <fileset dir="${src.build.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
             <fileset dir="${src.dist.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
             <fileset dir="${src.doc.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
             <fileset dir="${src.lib.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
@@ -968,7 +956,7 @@ is divided into following sections:
     <target depends="init,deps-jar,-pre-pre-compile" name="-do-compile-single">
         <fail unless="javac.includes">Must select some files in the IDE or set javac.includes</fail>
         <j2seproject3:force-recompile/>
-        <j2seproject3:javac excludes="" gensrcdir="${build.generated.sources.dir}" includes="${javac.includes}" sourcepath="${src..git.dir}:${src..settings.dir}:${src.DOCUMENTATION.dir}:${src.bin.dir}:${src.build.dir}:${src.dist.dir}:${src.doc.dir}:${src.lib.dir}:${src.librairies.dir}:${src.nbproject.dir}:${src.dir}"/>
+        <j2seproject3:javac excludes="" gensrcdir="${build.generated.sources.dir}" includes="${javac.includes}" sourcepath="${src.DOCUMENTATION.dir}:${src.dist.dir}:${src.doc.dir}:${src.lib.dir}:${src.librairies.dir}:${src.nbproject.dir}:${src.dir}"/>
     </target>
     <target name="-post-compile-single">
         <!-- Empty placeholder for easier customization. -->
@@ -1234,19 +1222,7 @@ is divided into following sections:
             <classpath>
                 <path path="${javac.classpath}"/>
             </classpath>
-            <fileset dir="${src..git.dir}" excludes="${bug5101868workaround},${excludes}" includes="${includes}">
-                <filename name="**/*.java"/>
-            </fileset>
-            <fileset dir="${src..settings.dir}" excludes="${bug5101868workaround},${excludes}" includes="${includes}">
-                <filename name="**/*.java"/>
-            </fileset>
             <fileset dir="${src.DOCUMENTATION.dir}" excludes="${bug5101868workaround},${excludes}" includes="${includes}">
-                <filename name="**/*.java"/>
-            </fileset>
-            <fileset dir="${src.bin.dir}" excludes="${bug5101868workaround},${excludes}" includes="${includes}">
-                <filename name="**/*.java"/>
-            </fileset>
-            <fileset dir="${src.build.dir}" excludes="${bug5101868workaround},${excludes}" includes="${includes}">
                 <filename name="**/*.java"/>
             </fileset>
             <fileset dir="${src.dist.dir}" excludes="${bug5101868workaround},${excludes}" includes="${includes}">
@@ -1274,19 +1250,7 @@ is divided into following sections:
             <arg line="${javadoc.endorsed.classpath.cmd.line.arg}"/>
         </javadoc>
         <copy todir="${dist.javadoc.dir}">
-            <fileset dir="${src..git.dir}" excludes="${excludes}" includes="${includes}">
-                <filename name="**/doc-files/**"/>
-            </fileset>
-            <fileset dir="${src..settings.dir}" excludes="${excludes}" includes="${includes}">
-                <filename name="**/doc-files/**"/>
-            </fileset>
             <fileset dir="${src.DOCUMENTATION.dir}" excludes="${excludes}" includes="${includes}">
-                <filename name="**/doc-files/**"/>
-            </fileset>
-            <fileset dir="${src.bin.dir}" excludes="${excludes}" includes="${includes}">
-                <filename name="**/doc-files/**"/>
-            </fileset>
-            <fileset dir="${src.build.dir}" excludes="${excludes}" includes="${includes}">
                 <filename name="**/doc-files/**"/>
             </fileset>
             <fileset dir="${src.dist.dir}" excludes="${excludes}" includes="${includes}">

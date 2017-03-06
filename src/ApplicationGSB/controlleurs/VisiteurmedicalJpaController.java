@@ -194,4 +194,11 @@ public class VisiteurmedicalJpaController implements Serializable {
         }
     }
     
+    public int loginConnexion(){
+            
+        List<Visiteurmedical> Visiteurs = findVisiteurmedicalEntities();
+        
+        return 1;
+    }
+    
 }
