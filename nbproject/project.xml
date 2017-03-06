@@ -11,6 +11,16 @@
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
             <name>GSB_PPE</name>
             <source-roots>
+                <root id="src..git.dir"/>
+                <root id="src..settings.dir"/>
+                <root id="src.DOCUMENTATION.dir"/>
+                <root id="src.bin.dir"/>
+                <root id="src.build.dir"/>
+                <root id="src.dist.dir"/>
+                <root id="src.doc.dir"/>
+                <root id="src.lib.dir"/>
+                <root id="src.librairies.dir"/>
+                <root id="src.nbproject.dir"/>
                 <root id="src.dir" name="src"/>
             </source-roots>
             <test-roots/>
