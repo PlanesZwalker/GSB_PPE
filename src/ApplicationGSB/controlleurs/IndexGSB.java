@@ -24,12 +24,16 @@ public class IndexGSB {
             Login monLogin = new Login();
             
             if(monLogin.connectVisiteur()== true){
+                
                 Accueil monAccueil = new Accueil();
                 monAccueil.setVisible(true);
-                monLogin.setVisible(false);
+      
                 return 1;
+                
             }else{
+                
                 return 0;
+                
             }
             
         }
